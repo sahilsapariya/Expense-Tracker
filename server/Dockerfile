@@ -14,6 +14,11 @@ COPY go.mod ./
 COPY go.sum ./
 RUN go mod download
 
+# Install required Go dependencies
+RUN go get github.com/gorilla/mux
+RUN go get github.com/jinzhu/gorm
+RUN go get github.com/jinzhu/gorm/dialects/sqlite
+
 COPY . .
 
 # Set PATH to include go bin
